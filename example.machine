@@ -1,0 +1,5 @@
+INC 1
+INC 2
+INC 3
+DEC 1 1
+DEC 3 2

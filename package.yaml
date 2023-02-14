@@ -1,0 +1,57 @@
+name:                shoenfield
+version:             0.1.0.0
+github:              "piotr-lewandowski/shoenfield-machine-interpreter"
+license:             MIT
+author:              "Piotr Lewandowski"
+copyright:           "2023 Piotr Lewandowski"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on GitHub at <https://github.com/piotr-lewandowski/shoenfield-machine-interpreter#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+library:
+  source-dirs: src
+  dependencies:
+    - parsec >= 3.1
+
+executables:
+  shoenfield-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - shoenfield
+    - parsec
+
+tests:
+  shoenfield-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - shoenfield
+    - QuickCheck
+    - hspec
+    - parsec
+    - text
