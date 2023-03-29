@@ -26,6 +26,7 @@ library
   exposed-modules:
       Instructions
       Parser
+      Reader
   other-modules:
       Paths_shoenfield
   hs-source-dirs:
