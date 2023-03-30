@@ -28,6 +28,8 @@ library:
   source-dirs: src
   dependencies:
     - parsec >= 3.1
+    - filepath
+    - directory
 
 executables:
   shoenfield-exe:
