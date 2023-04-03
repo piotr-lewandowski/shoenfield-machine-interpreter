@@ -19,6 +19,5 @@ reader =  do
             print ("Error: Couldn't open file " ++ filePath ++ ". Try again.")
             reader
         Right content -> do
-            let cleanContent = map (\c -> if c == '\n' then ' ' else c) content -- remove newline characters
             print ("Successfully opened file " ++ filePath)
-            return cleanContent
+            return filePath
