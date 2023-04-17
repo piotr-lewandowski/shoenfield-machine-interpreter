@@ -1,6 +1,7 @@
 {-# LANGUAGE RecordWildCards #-}
 module Simulation where
     
+import Instructions
 
 data State = State { register :: [Int], 
                      instructionCounter :: Int } 
@@ -55,3 +56,9 @@ runProgramStepByStep :: [State -> State] -> State -> State
 runProgramStepByStep list state@State{..}
     | instructionCounter >= length list  = state
     | otherwise = (list !! instructionCounter) state
+
+
+program2list :: Program -> [State -> State]
+program2list [] = []
+program2list ((Inc x):xs) = (inc x):program2list xs
+program2list ((Dec x y):xs) = (dec x y):program2list xs
