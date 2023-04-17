@@ -26,8 +26,8 @@ library
   exposed-modules:
       Instructions
       Parser
-      Simulation
       Reader
+      Simulation
   other-modules:
       Paths_shoenfield
   hs-source-dirs:
