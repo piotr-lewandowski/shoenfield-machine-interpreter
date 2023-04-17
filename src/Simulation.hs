@@ -8,7 +8,7 @@ data State = State { register :: [Int],
 
 -- Show który wypisuje pierwszy rejestr gdzie znajduje się Wynik
 instance Show State where
-    show :: State -> String
+    --show :: State -> String
     show state@State{..} =  show $ take 1 register
 
 --Alternatywny show którego używałem do testowania wypisuje n rejestrów. Przydatne przy obliczeniach krok po kroku
