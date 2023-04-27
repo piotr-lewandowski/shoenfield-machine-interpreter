@@ -33,10 +33,10 @@ import qualified Brick.Main as M
 import qualified Brick.Widgets.Border as B
 import qualified Brick.Widgets.Center as C
 import Brick.Widgets.Core
+import System.FilePath ((</>))
 
 
-
-filePathh = "/home/admin1/Desktop/myfirstapp/app/example.machine"
+filePathh = "app" </> "example.machine"
 
 prog :: [State -> State]
 prog = [inc 0, dec 0 3, inc 0, dec 1 2, inc 0, dec 0 7, inc 0, dec 2 6] 

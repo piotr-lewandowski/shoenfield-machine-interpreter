@@ -26,6 +26,7 @@ library
   exposed-modules:
       Instructions
       Parser
+      Simulation
   other-modules:
       Paths_shoenfield
   hs-source-dirs:
@@ -45,8 +46,16 @@ executable shoenfield-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , brick
+    , containers
+    , filepath
+    , microlens
+    , microlens-mtl
+    , microlens-th
     , parsec
     , shoenfield
+    , text
+    , vty
   default-language: Haskell2010
 
 test-suite shoenfield-test
