@@ -42,6 +42,14 @@ executables:
     dependencies:
     - shoenfield
     - parsec
+    - brick
+    - microlens
+    - microlens-th
+    - microlens-mtl
+    - text
+    - vty
+    - containers
+    - filepath
 
 tests:
   shoenfield-test:

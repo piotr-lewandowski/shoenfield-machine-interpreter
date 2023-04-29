@@ -62,3 +62,6 @@ program2list :: Program -> [State -> State]
 program2list [] = []
 program2list ((Inc x):xs) = inc (fromIntegral x):program2list xs
 program2list ((Dec x y):xs) = dec (fromIntegral x) (fromIntegral y):program2list xs
+
+allSteps :: [State -> State] -> State -> [State]
+allSteps prog initState = initState:allSteps prog (runProgramStepByStep prog initState)
