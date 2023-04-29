@@ -27,6 +27,7 @@ library
       Instructions
       Parser
       Reader
+      Simulation
   other-modules:
       Paths_shoenfield
   hs-source-dirs:
