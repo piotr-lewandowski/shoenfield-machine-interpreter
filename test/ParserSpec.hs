@@ -9,8 +9,8 @@ import Text.Parsec
 
 instance Arbitrary Instruction where
   arbitrary = do
-    register <- chooseInteger (1, 1000)
-    instruction <- chooseInteger (1, 1000)
+    register <- chooseInteger (0, 1000)
+    instruction <- chooseInteger (0, 1000)
     elements [Inc register, Dec register instruction]
 
 prop_roundtrip :: Program -> Bool
