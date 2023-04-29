@@ -8,12 +8,12 @@ data State = State { register :: [Int],
 
 -- Show który wypisuje pierwszy rejestr gdzie znajduje się Wynik
 instance Show State where
-    --show :: State -> String
-    show state@State{..} =  show $ take 1 register
+    show :: State -> String
+    show State{..} =  show $ take 1 register
 
 --Alternatywny show którego używałem do testowania wypisuje n rejestrów. Przydatne przy obliczeniach krok po kroku
 showState :: Int -> State -> String
-showState n state@State{..} = "Rejestr: " ++ show (take n register) ++ " Licznik: " ++ show instructionCounter
+showState n State{..} = "Rejestr: " ++ show (take n register) ++ " Licznik: " ++ show instructionCounter
 
 -- Funkcja służy do generwoania stanu pustego
 emptyState :: State
@@ -37,7 +37,7 @@ dec i n state@State{..}
   where
     updateList n f xs = take n xs ++ [f (xs !! n)] ++ drop (n + 1) xs
 
--- Funkcja zwraca wynik obliczeń porgramu(zapisanego w postaci listy funkcji inc oraz dec z podanymi parametrami) dla stanu początkowego 
+-- Funkcja zwraca wynik obliczeń programu (zapisanego w postaci listy funkcji inc oraz dec z podanymi parametrami) dla stanu początkowego 
 -- Przykładowe wywołanie: obliczenie 2+3
 -- x = initialState [2,3]
 -- obliczenia [inc 0,dec 0 3,inc 0,dec 1 2] x
@@ -47,11 +47,11 @@ runProgram list state@State{..}
     | otherwise = runProgram list ((list !! instructionCounter) state)
 
 
--- Funkcja ta to złożenie obliczenia oraz initialState - ławtiej się testuje
+-- Funkcja ta to złożenie obliczenia oraz initialState - łatwiej się testuje
 runProgram' :: [State -> State] -> [Int] -> State
 runProgram' program wejscie = runProgram program (initialState wejscie)
 
--- Funkcja wykonuje jeden raz program(o ile to możliwe) dla danego stanu
+-- Funkcja wykonuje jeden raz program (o ile to możliwe) dla danego stanu
 runProgramStepByStep :: [State -> State] -> State -> State
 runProgramStepByStep list state@State{..}
     | instructionCounter >= length list  = state
