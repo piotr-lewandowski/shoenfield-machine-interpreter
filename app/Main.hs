@@ -1,19 +1,23 @@
-module Main(main) where
+module Main (main) where
 
-import Parser
-import Text.Parsec.Text(parseFromFile)
-import Reader(reader)
-import Simulation ( emptyState, program2list, allSteps )
 import Interface (runUI)
+import Parser (parseArgs, parseProgram)
+import Reader (reader)
+import Simulation (allSteps, initialState, program2list)
+import Text.Parsec.Text (parseFromFile)
 
 main :: IO ()
 main = do
-  filePath <- reader
-  result <- parseFromFile parseProgram filePath
-  case result of
+  (programPath, argsPath) <- reader
+  resultProgram <- parseFromFile parseProgram programPath
+  resultArgs <- parseFromFile parseArgs argsPath
+  let input = do
+        program <- resultProgram
+        args <- resultArgs
+        pure (program, args)
+  case input of
     Left err -> print err
-    Right program -> do
-      let
-        funs = program2list program
-        states = allSteps funs emptyState
-      runUI states filePath
+    Right (program, args) -> do
+      let funs = program2list program
+          states = allSteps funs $ initialState args
+      runUI states programPath
